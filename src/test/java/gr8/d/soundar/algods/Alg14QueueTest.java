@@ -15,6 +15,11 @@ public class Alg14QueueTest {
     }
 
     @Test
+    public void testQueueUsingStack() {
+        testQueue(new Alg14Queue.QueueUsingStack<>());
+    }
+
+    @Test
     public void testWeave() {
         Alg14Queue.Queue<Integer> q1 = new Alg14Queue.QueueUsingArray<>();
         q1.add(1);

@@ -91,4 +91,34 @@ public class Alg14Queue {
             }
         }
     }
+
+    public static class QueueUsingStack<T> implements Queue<T> {
+
+        Alg15Stack.Stack<T> stack = new Alg15Stack.StackUsingArray<>();
+
+        @Override
+        public void add(T t) {
+            Alg15Stack.Stack<T> tempStack = new Alg15Stack.StackUsingArray<>();
+            while(stack.peek() != null)
+                tempStack.push(stack.pop());
+            tempStack.push(t);
+            while(tempStack.peek() != null)
+                stack.push(tempStack.pop());
+        }
+
+        @Override
+        public T remove() {
+            return stack.pop();
+        }
+
+        @Override
+        public T peek() {
+            return stack.peek();
+        }
+
+        @Override
+        public int size() {
+            return stack.size();
+        }
+    }
 }
