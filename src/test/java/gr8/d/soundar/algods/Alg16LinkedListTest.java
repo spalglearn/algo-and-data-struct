@@ -194,5 +194,24 @@ public class Alg16LinkedListTest {
 
         node6.setNext(node4); // circular reference
         Assert.assertTrue(Alg16LinkedList.isLinkedListLooping(node1));
+
+        Alg16LinkedList.LinkedList<Integer> ll = new Alg16LinkedList.LinkedList<>();
+        ll.insertAt(0, new Alg16LinkedList.Node<Integer>(Integer.valueOf(1)));
+        ll.insertAt(1, new Alg16LinkedList.Node<Integer>(Integer.valueOf(2)));
+        ll.insertAt(2, new Alg16LinkedList.Node<Integer>(Integer.valueOf(3)));
+        ll.insertAt(3, new Alg16LinkedList.Node<Integer>(Integer.valueOf(4)));
+        ll.insertAt(4, new Alg16LinkedList.Node<Integer>(Integer.valueOf(5)));
+        Assert.assertFalse(Alg16LinkedList.isLinkedListLooping(ll));
+    }
+
+    @Test
+    public void testFromLast() {
+        Alg16LinkedList.LinkedList<Integer> ll = new Alg16LinkedList.LinkedList<>();
+        ll.insertAt(0, new Alg16LinkedList.Node<Integer>(Integer.valueOf(1)));
+        ll.insertAt(1, new Alg16LinkedList.Node<Integer>(Integer.valueOf(2)));
+        ll.insertAt(2, new Alg16LinkedList.Node<Integer>(Integer.valueOf(3)));
+        ll.insertAt(3, new Alg16LinkedList.Node<Integer>(Integer.valueOf(4)));
+        ll.insertAt(4, new Alg16LinkedList.Node<Integer>(Integer.valueOf(5)));
+        Assert.assertEquals(Integer.valueOf(3), ll.fromLast(2).getData());
     }
 }

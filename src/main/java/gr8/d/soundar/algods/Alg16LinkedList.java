@@ -127,6 +127,20 @@ public class Alg16LinkedList {
             return midPoint;
         }
 
+        public Node<T> fromLast(int n) {
+            Node<T> midPoint = headNode;
+            Node<T> farPoint = headNode;
+            while (n > 0) {
+                farPoint = farPoint.getNext();
+                n--;
+            }
+            while (farPoint != null && farPoint.getNext() != null) {
+                midPoint = midPoint.getNext();
+                farPoint = farPoint.getNext();
+            }
+            return midPoint;
+        }
+
         private List<Node<T>> indexiefy() {
             List<Node<T>> index = new ArrayList<>();
 
