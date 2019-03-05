@@ -1,7 +1,6 @@
 package gr8.d.soundar.algods;
 
 public class Alg11VowelCount {
-    private static final char[] vowels = {'a', 'e', 'i', 'o', 'u'};
 
     public int count(String string) {
         char[] chars = string.replaceAll("[^\\w]", "").toLowerCase().toCharArray();

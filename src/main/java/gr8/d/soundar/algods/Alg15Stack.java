@@ -38,6 +38,7 @@ public class Alg15Stack {
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public T pop() {
             try {
                 T item = (T) q[q.length - 1];
@@ -54,6 +55,7 @@ public class Alg15Stack {
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public T peek() {
             try {
                 return (T) q[q.length - 1];

@@ -34,6 +34,7 @@ public class Alg14Queue {
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public T remove() {
             try {
                 T item = (T) q[0];
@@ -50,6 +51,7 @@ public class Alg14Queue {
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public T peek() {
             try {
                 return (T) q[0];
