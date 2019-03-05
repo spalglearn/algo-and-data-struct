@@ -155,4 +155,25 @@ public class Alg16LinkedListTest {
             Assert.assertTrue(i.equals(1) || i.equals(2) || i.equals(3));
         }
     }
+
+    @Test
+    public void testMidPoint() {
+        Alg16LinkedList.LinkedList<Integer> ll = new Alg16LinkedList.LinkedList<>();
+        ll.insertAt(0, new Alg16LinkedList.Node<Integer>(Integer.valueOf(1)));
+        ll.insertAt(1, new Alg16LinkedList.Node<Integer>(Integer.valueOf(2)));
+        ll.insertAt(2, new Alg16LinkedList.Node<Integer>(Integer.valueOf(3)));
+        ll.insertAt(3, new Alg16LinkedList.Node<Integer>(Integer.valueOf(4)));
+        ll.insertAt(4, new Alg16LinkedList.Node<Integer>(Integer.valueOf(5)));
+        Assert.assertEquals(Integer.valueOf(3), ll.midPoint().getData());
+        ll.clear();
+        ll.insertAt(0, new Alg16LinkedList.Node<Integer>(Integer.valueOf(1)));
+        ll.insertAt(1, new Alg16LinkedList.Node<Integer>(Integer.valueOf(2)));
+        ll.insertAt(2, new Alg16LinkedList.Node<Integer>(Integer.valueOf(3)));
+        ll.insertAt(3, new Alg16LinkedList.Node<Integer>(Integer.valueOf(4)));
+        ll.insertAt(4, new Alg16LinkedList.Node<Integer>(Integer.valueOf(5)));
+        ll.insertAt(4, new Alg16LinkedList.Node<Integer>(Integer.valueOf(6)));
+        Assert.assertEquals(Integer.valueOf(3), ll.midPoint().getData());
+        ll.clear();
+        Assert.assertNull(ll.midPoint());
+    }
 }

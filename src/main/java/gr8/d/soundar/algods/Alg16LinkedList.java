@@ -36,7 +36,7 @@ public class Alg16LinkedList {
                 return;
             } else {
                 List<Node<T>> indexedNodes = indexiefy();
-                if (index == LAST_INDEX) {
+                if (index == LAST_INDEX || index >= indexedNodes.size()) {
                     // Insert at last
                     try {
                         indexedNodes.get(indexedNodes.size() - 1).setNext(node);
@@ -113,6 +113,18 @@ public class Alg16LinkedList {
 
         public void clear() {
             headNode = null;
+        }
+
+        public Node<T> midPoint() {
+            Node<T> midPoint = headNode;
+            Node<T> farPoint = headNode;
+
+            while (farPoint != null && farPoint.getNext() != null && farPoint.getNext().getNext() != null) {
+                midPoint = midPoint.getNext();
+                farPoint = farPoint.getNext().getNext();
+            }
+
+            return midPoint;
         }
 
         private List<Node<T>> indexiefy() {
