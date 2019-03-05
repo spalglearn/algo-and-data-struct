@@ -10,21 +10,16 @@ public class Alg16LinkedList {
         private static final int LAST_INDEX = -1;
         private Node<T> headNode;
 
-        public void insertFirst(Node<T> node) {
-            insertAt(0, node);
+        public void insertFirst(T data) {
+            insertAt(0, data);
         }
 
-        public void insertLast(Node<T> node) {
-            node.setNext(null);
-            insertAt(LAST_INDEX, node);
+        public void insertLast(T data) {
+            insertAt(LAST_INDEX, data);
         }
 
-        public void insertAt(int index, Node<T> node) {
-            if (node == null) {
-                return;
-            }
-
-            node.setNext(null);
+        public void insertAt(int index, T data) {
+            Node<T> node = new Node<>(data);
 
             if (headNode == null) {
                 // Empty linked list
@@ -59,20 +54,20 @@ public class Alg16LinkedList {
             }
         }
 
-        public Node<T> getFirst() {
+        public T getFirst() {
             return getAt(0);
         }
 
-        public Node<T> getLast() {
+        public T getLast() {
             return getAt(LAST_INDEX);
         }
 
-        public Node<T> getAt(int index) {
+        public T getAt(int index) {
             List<Node<T>> indexedNodes = indexiefy();
             if (index == LAST_INDEX)
                 index = indexedNodes.size() - 1;
             try {
-                return indexedNodes.get(index);
+                return indexedNodes.get(index).getData();
             } catch (IndexOutOfBoundsException e) {
                 return null;
             }
@@ -115,7 +110,7 @@ public class Alg16LinkedList {
             headNode = null;
         }
 
-        public Node<T> midPoint() {
+        public T midPoint() {
             Node<T> midPoint = headNode;
             Node<T> farPoint = headNode;
 
@@ -124,10 +119,10 @@ public class Alg16LinkedList {
                 farPoint = farPoint.getNext().getNext();
             }
 
-            return midPoint;
+            return (midPoint == null) ? null : midPoint.getData();
         }
 
-        public Node<T> fromLast(int n) {
+        public T fromLast(int n) {
             Node<T> midPoint = headNode;
             Node<T> farPoint = headNode;
             while (n > 0) {
@@ -138,7 +133,7 @@ public class Alg16LinkedList {
                 midPoint = midPoint.getNext();
                 farPoint = farPoint.getNext();
             }
-            return midPoint;
+            return (midPoint == null) ? null : midPoint.getData();
         }
 
         private List<Node<T>> indexiefy() {
@@ -203,7 +198,7 @@ public class Alg16LinkedList {
     }
 
     public static <T> boolean isLinkedListLooping(LinkedList<T> linkedList) {
-        return isLinkedListLooping(linkedList.getFirst());
+        return isLinkedListLooping(linkedList.headNode);
     }
 
     public static <T> boolean isLinkedListLooping(Node<T> node) {
