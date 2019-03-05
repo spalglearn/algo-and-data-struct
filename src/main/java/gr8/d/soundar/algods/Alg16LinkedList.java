@@ -187,4 +187,20 @@ public class Alg16LinkedList {
             return data;
         }
     }
+
+    public static <T> boolean isLinkedListLooping(LinkedList<T> linkedList) {
+        return isLinkedListLooping(linkedList.getFirst());
+    }
+
+    public static <T> boolean isLinkedListLooping(Node<T> node) {
+        Node<T> slowNode = node;
+        Node<T> fastNode = node;
+        while (fastNode != null && fastNode.getNext() != null && fastNode.getNext().getNext() != null) {
+            slowNode = slowNode.getNext();
+            fastNode = fastNode.getNext().getNext();
+            if (slowNode == fastNode)
+                return true;
+        }
+        return false;
+    }
 }

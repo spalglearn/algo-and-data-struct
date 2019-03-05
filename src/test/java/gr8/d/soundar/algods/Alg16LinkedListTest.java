@@ -176,4 +176,23 @@ public class Alg16LinkedListTest {
         ll.clear();
         Assert.assertNull(ll.midPoint());
     }
+
+    @Test
+    public void testLinkedListLoop() {
+        Alg16LinkedList.Node<Integer> node1 = new Alg16LinkedList.Node<Integer>(Integer.valueOf(1));
+        Alg16LinkedList.Node<Integer> node2 = new Alg16LinkedList.Node<Integer>(Integer.valueOf(2));
+        Alg16LinkedList.Node<Integer> node3 = new Alg16LinkedList.Node<Integer>(Integer.valueOf(3));
+        Alg16LinkedList.Node<Integer> node4 = new Alg16LinkedList.Node<Integer>(Integer.valueOf(4));
+        Alg16LinkedList.Node<Integer> node5 = new Alg16LinkedList.Node<Integer>(Integer.valueOf(5));
+        Alg16LinkedList.Node<Integer> node6 = new Alg16LinkedList.Node<Integer>(Integer.valueOf(6));
+        node1.setNext(node2);
+        node2.setNext(node3);
+        node3.setNext(node4);
+        node4.setNext(node5);
+        node5.setNext(node6);
+        Assert.assertFalse(Alg16LinkedList.isLinkedListLooping(node1));
+
+        node6.setNext(node4); // circular reference
+        Assert.assertTrue(Alg16LinkedList.isLinkedListLooping(node1));
+    }
 }
